@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://70yndbo6b8d5"]
+
+[ext_resource type="Script" path="res://scripts/Main.cs" id="1_h6wsg"]
+[ext_resource type="Script" path="res://scripts/CardManager.cs" id="2_cjthi"]
+[ext_resource type="PackedScene" uid="uid://ckhhlnongyl02" path="res://scenes/card_base.tscn" id="2_w70m4"]
+[ext_resource type="PackedScene" uid="uid://bvqdwaooiuxa3" path="res://scenes/card_slot.tscn" id="4_ypafl"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_h6wsg")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -15.5
+offset_right = 50.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "placeholder"
+
+[node name="CardManager" type="Node2D" parent="."]
+script = ExtResource("2_cjthi")
+
+[node name="CardDemo1" parent="CardManager" instance=ExtResource("2_w70m4")]
+position = Vector2(859, 303)
+
+[node name="CardDemo2" parent="CardManager" instance=ExtResource("2_w70m4")]
+position = Vector2(377, 286)
+rotation = 1.5708
+
+[node name="Showable" parent="CardManager/CardDemo2" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="CardFront" parent="CardManager/CardDemo2/Showable" index="0"]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="CardBack" parent="CardManager/CardDemo2/Showable" index="1"]
+visible = true
+metadata/_edit_lock_ = true
+
+[node name="Area2D" parent="CardManager/CardDemo2" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" parent="CardManager/CardDemo2/Area2D" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="CardSlot" parent="." instance=ExtResource("4_ypafl")]
+position = Vector2(416, 484)
+
+[node name="CardSlot2" parent="." instance=ExtResource("4_ypafl")]
+position = Vector2(643, 472)
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+
+[editable path="CardManager/CardDemo2"]
