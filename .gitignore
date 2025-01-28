@@ -1,5 +1,9 @@
-# Godot 4+ specific ignores
-.godot/
+/.git
+/.godot
+/.idea
+/.mono
+/.vscode
+/CardTest.sln.DotSettings.user
 
 # Godot-specific ignores
 .import/
@@ -10,6 +14,5 @@ export_presets.cfg
 *.translation
 
 # Mono-specific ignores
-.mono/
 data_*/
 mono_crash.*.json
